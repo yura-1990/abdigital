@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.show{
+    font-size: 22px;
+    background: rgba(50, 50, 238, 0.32);
+    padding: 2px 5px;
+    border-radius: 8px;
+    animation: showing 2s linear infinite;
+}
+
+@keyframes showing {
+    0%{
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+    25%{
+        transform: translateY(0%);
+        opacity: 0.5;
+    }
+    50%{
+        transform: translateY(10%);
+        opacity: 0;
+    }
+    75%{
+        transform: translateY(0%);
+        opacity: 0.5;
+    }
+    100%{
+        transform: translateY(-10%);
+        opacity: 0;
+    }
+}
+
+
