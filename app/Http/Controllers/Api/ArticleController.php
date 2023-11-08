@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\DTO\ArticleDataDTO;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
@@ -92,6 +93,19 @@ class ArticleController extends Controller
             'content' => $data['content'] ?? $article->content
         ]);
 
+        return $this->success(new ArticleResource($article));
+    }
+
+    /**
+     * @param Article $article
+     * @return JsonResponse
+     */
+    #[Get('/show/{article}')]
+    #[Operation(tags: ['Article'], security: BearerTokenSecurityScheme::class,  method: 'GET')]
+    #[Parameters(factory: ArticleParameters::class)]
+    #[Response(factory: ArticleResponse::class)]
+    public function show(Article $article): JsonResponse
+    {
         return $this->success(new ArticleResource($article));
     }
 
